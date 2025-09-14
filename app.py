@@ -2,13 +2,12 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pyfiglet import Figlet, FigletFont, FontNotFound
-from starlette.middleware.session import SessionMiddleware
 
 app = FastAPI()
 
 # Add session middleware
 # IMPORTANT: Change this secret key in a production environment
-app.add_middleware(SessionMiddleware, secret_key="some-random-string")
+app.add_middleware("starlette.middleware.session.SessionMiddleware", secret_key="some-random-string")
 
 templates = Jinja2Templates(directory="templates")
 
