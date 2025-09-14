@@ -4,4 +4,4 @@ python-multipart
 jinja2
 pyfiglet
 itsdangerous
-starlette
+starlette==0.47.3
