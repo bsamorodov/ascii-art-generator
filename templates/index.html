@@ -24,12 +24,12 @@
     <div class="form-container">
         <form method="POST">
             <label for="text">Text:</label>
-            <input type="text" id="text" name="text" required>
+            <input type="text" id="text" name="text" value="{{ text | default('', true) }}" required>
 
             <label for="font">Font:</label>
             <select id="font" name="font">
                 {% for font in fonts %}
-                    <option value="{{ font }}">{{ font }}</option>
+                    <option value="{{ font }}" {% if font == selected_font %}selected{% endif %}>{{ font }}</option>
                 {% endfor %}
             </select>
 
