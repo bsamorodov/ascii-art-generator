@@ -98,3 +98,5 @@ ENV/
 
 # Gemini
 .gemini/
+
+gha-creds-*.json
