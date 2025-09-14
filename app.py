@@ -23,11 +23,13 @@ fonts = [
     'dotmatrix',
     'bubble',
     'bulbhead',
-    'digital'
+    'digital',
+    'block'
 ]
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
+    fonts.sort()
     return templates.TemplateResponse("index.html", {"request": request, "fonts": fonts, "ascii_art": ""})
 
 @app.post("/", response_class=HTMLResponse)
