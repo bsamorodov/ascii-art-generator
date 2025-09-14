@@ -24,12 +24,12 @@
     <div class="form-container">
         <form method="POST">
             <label for="text">Text:</label>
-            <input type="text" id="text" name="text" value="{{ text | default('', true) }}" required>
+            <input type="text" id="text" name="text" required>
 
             <label for="font">Font:</label>
             <select id="font" name="font">
                 {% for font in fonts %}
-                    <option value="{{ font }}" {% if font == selected_font %}selected{% endif %}>{{ font }}</option>
+                    <option value="{{ font }}">{{ font }}</option>
                 {% endfor %}
             </select>
 
@@ -42,5 +42,29 @@
         <pre>{{ ascii_art }}</pre>
     {% endif %}
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text');
+            const fontSelect = document.getElementById('font');
+            const form = document.querySelector('form');
+
+            // Load saved values from localStorage
+            const savedText = localStorage.getItem('text');
+            const savedFont = localStorage.getItem('font');
+
+            if (savedText) {
+                textInput.value = savedText;
+            }
+            if (savedFont) {
+                fontSelect.value = savedFont;
+            }
+
+            // Save values to localStorage on form submit
+            form.addEventListener('submit', function() {
+                localStorage.setItem('text', textInput.value);
+                localStorage.setItem('font', fontSelect.value);
+            });
+        });
+    </script>
 </body>
 </html>

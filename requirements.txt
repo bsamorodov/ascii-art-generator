@@ -3,5 +3,3 @@ uvicorn
 python-multipart
 jinja2
 pyfiglet
-itsdangerous
-starlette==0.47.3
